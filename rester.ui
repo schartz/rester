@@ -17,73 +17,75 @@
    <property name="autoFillBackground">
     <bool>true</bool>
    </property>
-   <layout class="QGridLayout" name="gridLayout">
-    <property name="leftMargin">
-     <number>10</number>
-    </property>
-    <property name="topMargin">
-     <number>10</number>
-    </property>
+   <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0">
-     <widget class="QComboBox" name="comboBox">
-      <item>
-       <property name="text">
-        <string>GET</string>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <widget class="QFrame" name="frame">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>POST</string>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
        </property>
-      </item>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit"/>
-    </item>
-    <item row="0" column="2">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>Send</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="3">
-     <widget class="QPushButton" name="pushButton_2">
-      <property name="text">
-       <string>Save</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="4" rowspan="2">
-     <widget class="QTabWidget" name="tabWidget_2">
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="tab_2">
-       <attribute name="title">
-        <string>History</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_3">
-       <attribute name="title">
-        <string>Collections</string>
-       </attribute>
-      </widget>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="4">
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="currentIndex">
-       <number>1</number>
-      </property>
-      <widget class="QWidget" name="params_tab">
-       <attribute name="title">
-        <string>Parameters</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout">
-        <item>
-         <widget class="QLabel" name="params_tab_title">
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QComboBox" name="comboBox">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <item>
+           <property name="text">
+            <string>GET</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
+            <string>POST</string>
+           </property>
+          </item>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="lineEdit">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="2">
+         <widget class="QPushButton" name="pushButton">
+          <property name="text">
+           <string>Send</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="QPushButton" name="pushButton_2">
+          <property name="text">
+           <string>Save</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_2">
           <property name="font">
            <font>
             <weight>75</weight>
@@ -91,104 +93,175 @@
            </font>
           </property>
           <property name="text">
-           <string>URL Query Parameters</string>
+           <string>Request</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QTableWidget" name="params_table">
-          <property name="rowCount">
-           <number>1</number>
+        <item row="2" column="0" colspan="4">
+         <widget class="QTabWidget" name="tabWidget">
+          <property name="currentIndex">
+           <number>2</number>
           </property>
-          <property name="horizontalHeader" stdset="0">
-           <string/>
-          </property>
-          <attribute name="horizontalHeaderStretchLastSection">
-           <bool>true</bool>
-          </attribute>
-          <row/>
-          <column>
-           <property name="text">
-            <string>Key</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Value</string>
-           </property>
-          </column>
+          <widget class="QWidget" name="params_tab">
+           <attribute name="title">
+            <string>Parameters</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout">
+            <item>
+             <widget class="QLabel" name="params_tab_title">
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>URL Query Parameters</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="params_table">
+              <property name="rowCount">
+               <number>1</number>
+              </property>
+              <property name="horizontalHeader" stdset="0">
+               <string/>
+              </property>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>true</bool>
+              </attribute>
+              <row/>
+              <column>
+               <property name="text">
+                <string>Key</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Value</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="auth_tab">
+           <attribute name="title">
+            <string>Authorization</string>
+           </attribute>
+           <widget class="QComboBox" name="auth_type">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>40</y>
+              <width>121</width>
+              <height>33</height>
+             </rect>
+            </property>
+            <item>
+             <property name="text">
+              <string>No Auth</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>Bearer Token</string>
+             </property>
+            </item>
+           </widget>
+           <widget class="QLabel" name="auth_type_label">
+            <property name="geometry">
+             <rect>
+              <x>10</x>
+              <y>20</y>
+              <width>111</width>
+              <height>17</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Authorization Type</string>
+            </property>
+           </widget>
+           <widget class="QLabel" name="token_field_label">
+            <property name="geometry">
+             <rect>
+              <x>150</x>
+              <y>20</y>
+              <width>54</width>
+              <height>17</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Token</string>
+            </property>
+           </widget>
+           <widget class="QLineEdit" name="token">
+            <property name="geometry">
+             <rect>
+              <x>150</x>
+              <y>40</y>
+              <width>461</width>
+              <height>33</height>
+             </rect>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="header_tab">
+           <attribute name="title">
+            <string>Headers</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QLabel" name="headers_tab_title">
+              <property name="font">
+               <font>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Headers (1)</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QTableWidget" name="headers_table">
+              <property name="font">
+               <font>
+                <kerning>true</kerning>
+               </font>
+              </property>
+              <property name="rowCount">
+               <number>1</number>
+              </property>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>true</bool>
+              </attribute>
+              <row/>
+              <column>
+               <property name="text">
+                <string>Key</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Value</string>
+               </property>
+              </column>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="tab">
+           <attribute name="title">
+            <string>Body</string>
+           </attribute>
+          </widget>
          </widget>
         </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="auth_tab">
-       <attribute name="title">
-        <string>Authorization</string>
-       </attribute>
-       <widget class="QComboBox" name="auth_type">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>40</y>
-          <width>121</width>
-          <height>33</height>
-         </rect>
-        </property>
-        <item>
-         <property name="text">
-          <string>No Auth</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Bearer Token</string>
-         </property>
-        </item>
-       </widget>
-       <widget class="QLabel" name="auth_type_label">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>111</width>
-          <height>17</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Authorization Type</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="token_field_label">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>20</y>
-          <width>54</width>
-          <height>17</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Token</string>
-        </property>
-       </widget>
-       <widget class="QLineEdit" name="token">
-        <property name="geometry">
-         <rect>
-          <x>150</x>
-          <y>40</y>
-          <width>461</width>
-          <height>33</height>
-         </rect>
-        </property>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="header_tab">
-       <attribute name="title">
-        <string>Headers</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
-         <widget class="QLabel" name="headers_tab_title">
+        <item row="3" column="0">
+         <widget class="QLabel" name="label">
           <property name="font">
            <font>
             <weight>75</weight>
@@ -196,37 +269,95 @@
            </font>
           </property>
           <property name="text">
-           <string>Headers (1)</string>
+           <string>Response</string>
           </property>
          </widget>
         </item>
-        <item>
-         <widget class="QTableWidget" name="headers_table">
-          <property name="rowCount">
-           <number>1</number>
+        <item row="4" column="0" colspan="4">
+         <widget class="QTabWidget" name="tabWidget_3">
+          <property name="currentIndex">
+           <number>0</number>
           </property>
-          <attribute name="horizontalHeaderStretchLastSection">
-           <bool>true</bool>
-          </attribute>
-          <row/>
-          <column>
-           <property name="text">
-            <string>Key</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Value</string>
-           </property>
-          </column>
+          <widget class="QWidget" name="tab_4">
+           <attribute name="title">
+            <string>HTML Response</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tab_5">
+           <attribute name="title">
+            <string>Raw Response</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tab_6">
+           <attribute name="title">
+            <string>Response Headers</string>
+           </attribute>
+           <widget class="QTableWidget" name="headers_table_2">
+            <property name="geometry">
+             <rect>
+              <x>-10</x>
+              <y>-10</y>
+              <width>851</width>
+              <height>261</height>
+             </rect>
+            </property>
+            <property name="gridStyle">
+             <enum>Qt::NoPen</enum>
+            </property>
+            <property name="rowCount">
+             <number>1</number>
+            </property>
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+            <row/>
+            <column>
+             <property name="text">
+              <string>Key</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Value</string>
+             </property>
+            </column>
+           </widget>
+          </widget>
          </widget>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="tab">
-       <attribute name="title">
-        <string>Body</string>
-       </attribute>
+      <widget class="QFrame" name="frame_2">
+       <property name="font">
+        <font>
+         <kerning>false</kerning>
+        </font>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="QTabWidget" name="tabWidget_2">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="tab_2">
+           <attribute name="title">
+            <string>History</string>
+           </attribute>
+          </widget>
+          <widget class="QWidget" name="tab_3">
+           <attribute name="title">
+            <string>Collections</string>
+           </attribute>
+          </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
