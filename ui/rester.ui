@@ -98,9 +98,9 @@
          </widget>
         </item>
         <item row="2" column="0" colspan="4">
-         <widget class="QTabWidget" name="params">
+         <widget class="QTabWidget" name="params_tablist">
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="params_tab">
            <attribute name="title">
@@ -274,26 +274,31 @@
          </widget>
         </item>
         <item row="4" column="0" colspan="4">
-         <widget class="QTabWidget" name="tabWidget_3">
+         <widget class="QTabWidget" name="response_tablist">
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
-          <widget class="QWidget" name="tab_4">
+          <widget class="QWidget" name="response_html_tab">
            <attribute name="title">
             <string>HTML Response</string>
            </attribute>
           </widget>
-          <widget class="QWidget" name="tab_7">
+          <widget class="QWidget" name="response_json_tab">
            <attribute name="title">
             <string>JSON Response</string>
            </attribute>
           </widget>
-          <widget class="QWidget" name="tab_5">
+          <widget class="QWidget" name="response_raw_tab">
            <attribute name="title">
             <string>Raw Request Dump</string>
            </attribute>
+           <layout class="QGridLayout" name="gridLayout_7">
+            <item row="0" column="0">
+             <widget class="QTextBrowser" name="response_raw"/>
+            </item>
+           </layout>
           </widget>
-          <widget class="QWidget" name="tab_6">
+          <widget class="QWidget" name="response_headers_tab">
            <attribute name="title">
             <string>Response Headers</string>
            </attribute>
