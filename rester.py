@@ -1,7 +1,7 @@
 from PyQt5 import QtWidgets, QtGui
-import sys, json
-import urllib3
+import sys, urllib3
 import models.app_state as app_state
+from threads.http import HttpThread
 from ui.ui import Ui_mainWindow as ResterUiWindow
 
 
@@ -9,14 +9,18 @@ class Rester(ResterUiWindow):
     def __init__(self):
         super().__init__()
         self.app_state = app_state.AppState()
-        self.http = urllib3.PoolManager()
 
     def on_url_type_changed(self, text):
         self.app_state.request_attributes.request_type = text
 
     def handle_request_send(self):
+        self.clear_ui_before_request()
         self.app_state.request_attributes.url = self.url.text()
-        response = self.http.request('GET', self.app_state.request_attributes.url)
+        self.request_thread = HttpThread(self.app_state.request_attributes)
+        self.request_thread.request_completed.connect(self.update_ui_with_response)
+        self.request_thread.start()
+
+    def update_ui_with_response(self, response: urllib3.response.HTTPResponse):
         raw_response = str(response.data)
         headers = response.headers
 
@@ -32,6 +36,11 @@ class Rester(ResterUiWindow):
             self.response_headers_table.setItem(i, 1, QtWidgets.QTableWidgetItem(headers[key]))
             i += 1
 
+    def clear_ui_before_request(self):
+        self.response_raw.setText('')
+        self.app_state.response_attributes.raw_response = ''
+        self.app_state.response_attributes.headers = {}
+        self.response_headers_table.setRowCount(0)
 
 def bind_actions(rester: Rester):
     # connect URL type combo box with internal variable
