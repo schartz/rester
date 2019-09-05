@@ -1,6 +1,6 @@
 from PyQt5 import QtCore
 import urllib3
-from models.app_state import RequestAttributes
+from src.main.python.models.app_state import RequestAttributes
 
 
 class HttpThread(QtCore.QThread):

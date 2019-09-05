@@ -1,8 +1,12 @@
-from PyQt5 import QtWidgets, QtGui
-import sys, urllib3
-import models.app_state as app_state
-from threads.http import HttpThread
-from ui.ui import Ui_mainWindow as ResterUiWindow
+import sys
+import urllib3
+
+from PyQt5 import QtWidgets
+from fbs_runtime.application_context.PyQt5 import ApplicationContext
+
+import src.main.python.models.app_state as app_state
+from src.main.python.threads.http import HttpThread
+from src.main.python.ui.ui import Ui_mainWindow as ResterUiWindow
 
 
 class Rester(ResterUiWindow):
@@ -10,7 +14,7 @@ class Rester(ResterUiWindow):
         super().__init__()
         self.app_state = app_state.AppState()
 
-    def on_url_type_changed(self, text):
+    def on_url_type_changed(self, text: str) -> None:
         self.app_state.request_attributes.request_type = text
 
     def handle_request_send(self):
@@ -42,27 +46,21 @@ class Rester(ResterUiWindow):
         self.app_state.response_attributes.headers = {}
         self.response_headers_table.setRowCount(0)
 
+
 def bind_actions(rester: Rester):
-    # connect URL type combo box with internal variable
     rester.request_type.activated[str].connect(rester.on_url_type_changed)
     rester.send_btn.clicked.connect(rester.handle_request_send)
 
 
-# Create an instance of QtWidgets.QApplication
-app = QtWidgets.QApplication(sys.argv)
+if __name__ == '__main__':
+    app_context = ApplicationContext()  # 1. Instantiate ApplicationContext
+    window = QtWidgets.QMainWindow()
+    rester_main_window = Rester()
 
-# Create an instance of QtWidgets.QMainWindow
-mainWindow = QtWidgets.QMainWindow()
+    rester_main_window.setupUi(window)
+    bind_actions(rester_main_window)
 
-# Create an instance of our application class
-rester_main_window = Rester()
-
-# Bind Qt rendering of QtWidgets.QMainWindow with our main window
-rester_main_window.setupUi(mainWindow)
-bind_actions(rester_main_window)
-
-# show it!
-mainWindow.show()
-
-# Without this line, the window of Rester will not show up
-sys.exit(app.exec_())
+    window.resize(1200, 800)
+    window.show()
+    exit_code = app_context.app.exec_()  # 2. Invoke app_context.app.exec_()
+    sys.exit(exit_code)
