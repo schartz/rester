@@ -5,7 +5,7 @@ from src.main.python.models.app_state import RequestAttributes
 
 class HttpThread(QtCore.QThread):
 
-    request_completed = QtCore.pyqtSignal(urllib3.response.HTTPResponse)
+    request_completed = QtCore.pyqtSignal(dict)
 
     def __init__(self, request_attributes: RequestAttributes):
         QtCore.QThread.__init__(self)
@@ -19,8 +19,11 @@ class HttpThread(QtCore.QThread):
         return self._execute_http_request(self.request_attributes)
 
     def _execute_http_request(self, req: RequestAttributes):
-        response = self.http_client.request(method=req.request_type, url=req.url, fields=req.headers)
-        self.request_completed.emit(response)
+        try:
+            response = self.http_client.request(method=req.request_type, url=req.url, fields=req.headers)
+            self.request_completed.emit({'is_success': True, 'response': response, 'error': None})
+        except Exception as e:
+            self.request_completed.emit({'is_success': False, 'response': None, 'error': str(e)})
 
 
 

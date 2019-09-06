@@ -20,4 +20,5 @@ class ResponseAttributes:
     def __init__(self):
         self.status_code = 0
         self.raw_response = ''
+        self.text_response = ''
         self.headers = {}
