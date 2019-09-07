@@ -21,7 +21,7 @@ class HttpThread(QtCore.QThread):
     def _execute_http_request(self, req: RequestAttributes):
         try:
             response = self.http_client.request(method=req.request_type, url=req.url, fields=req.headers)
-            self.request_completed.emit({'is_success': True, 'response': response, 'error': None})
+            self.request_completed.emit({'is_success': True, 'response': response, 'error': None, 'status_message': response.status})
         except Exception as e:
             self.request_completed.emit({'is_success': False, 'response': None, 'error': str(e)})
 
