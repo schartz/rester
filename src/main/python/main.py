@@ -5,10 +5,10 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
 
-import src.main.python.models.app_state as app_state
-from src.main.python.threads.http import HttpThread
-from src.main.python.ui.ui import Ui_mainWindow as ResterUiWindow
-from src.main.python.utils import utils
+import models.app_state as app_state
+from threads.http import HttpThread
+from ui.ui import Ui_mainWindow as ResterUiWindow
+from utils import utils
 
 
 class Rester(ResterUiWindow):
