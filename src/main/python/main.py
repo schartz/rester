@@ -88,7 +88,6 @@ class Rester(ResterUiWindow):
         self.request_headers_table.setCellWidget(insert_position, 0, delete_button)
         delete_button.clicked.connect(self.delete_selected_row)
         delete_button.setStyleSheet("color: red; font-weight: bold")
-        delete_button.setGeometry(20, 30, 20, 30)
 
         self.headers_tab_title.setText('Headers(' + str(insert_position + 1) + ')')
 
