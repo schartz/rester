@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\schartz\code\Pyenv\rester\src\main\python\ui\rester.ui'
+# Form implementation generated from reading ui file 'rester.ui'
 #
-# Created by: PyQt5 UI code generator 5.9.2
+# Created by: PyQt5 UI code generator 5.13.0
 #
 # WARNING! All changes made in this file will be lost!
 
+
 from PyQt5 import QtCore, QtGui, QtWidgets
+
 
 class Ui_mainWindow(object):
     def setupUi(self, mainWindow):
@@ -106,6 +108,9 @@ class Ui_mainWindow(object):
         self.params_table.setHorizontalHeaderItem(1, item)
         self.params_table.horizontalHeader().setStretchLastSection(True)
         self.verticalLayout.addWidget(self.params_table)
+        self.pushButton = QtWidgets.QPushButton(self.params_tab)
+        self.pushButton.setObjectName("pushButton")
+        self.verticalLayout.addWidget(self.pushButton)
         self.params_tablist.addTab(self.params_tab, "")
         self.auth_tab = QtWidgets.QWidget()
         self.auth_tab.setObjectName("auth_tab")
@@ -160,6 +165,26 @@ class Ui_mainWindow(object):
         self.params_tablist.addTab(self.header_tab, "")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
+        self.gridLayout_12 = QtWidgets.QGridLayout(self.tab)
+        self.gridLayout_12.setObjectName("gridLayout_12")
+        self.tabWidget = QtWidgets.QTabWidget(self.tab)
+        self.tabWidget.setObjectName("tabWidget")
+        self.tab_5 = QtWidgets.QWidget()
+        self.tab_5.setObjectName("tab_5")
+        self.tabWidget.addTab(self.tab_5, "")
+        self.tab_6 = QtWidgets.QWidget()
+        self.tab_6.setObjectName("tab_6")
+        self.tabWidget.addTab(self.tab_6, "")
+        self.tab_8 = QtWidgets.QWidget()
+        self.tab_8.setObjectName("tab_8")
+        self.gridLayout_13 = QtWidgets.QGridLayout(self.tab_8)
+        self.gridLayout_13.setObjectName("gridLayout_13")
+        self.textEdit = QtWidgets.QTextEdit(self.tab_8)
+        self.textEdit.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.textEdit.setObjectName("textEdit")
+        self.gridLayout_13.addWidget(self.textEdit, 0, 0, 1, 1)
+        self.tabWidget.addTab(self.tab_8, "")
+        self.gridLayout_12.addWidget(self.tabWidget, 0, 0, 1, 1)
         self.params_tablist.addTab(self.tab, "")
         self.gridLayout.addWidget(self.params_tablist, 1, 0, 1, 1)
         self.res_container_frame = QtWidgets.QFrame(self.splitter_2)
@@ -279,7 +304,7 @@ class Ui_mainWindow(object):
         self.gridLayout_3.addWidget(self.splitter, 0, 0, 1, 1)
         mainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(mainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1047, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1047, 25))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -360,8 +385,9 @@ class Ui_mainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(mainWindow)
-        self.params_tablist.setCurrentIndex(2)
-        self.response_tablist.setCurrentIndex(2)
+        self.params_tablist.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(2)
+        self.response_tablist.setCurrentIndex(1)
         self.history_and_collection_tabs.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(mainWindow)
 
@@ -376,6 +402,7 @@ class Ui_mainWindow(object):
         item.setText(_translate("mainWindow", "Key"))
         item = self.params_table.horizontalHeaderItem(1)
         item.setText(_translate("mainWindow", "Value"))
+        self.pushButton.setText(_translate("mainWindow", "Add Parameter"))
         self.params_tablist.setTabText(self.params_tablist.indexOf(self.params_tab), _translate("mainWindow", "Parameters"))
         self.auth_type_label.setText(_translate("mainWindow", "Authorization Type"))
         self.token_field_label.setText(_translate("mainWindow", "Token"))
@@ -391,6 +418,9 @@ class Ui_mainWindow(object):
         item.setText(_translate("mainWindow", "Value"))
         self.add_new_header_btn.setText(_translate("mainWindow", "Add Header"))
         self.params_tablist.setTabText(self.params_tablist.indexOf(self.header_tab), _translate("mainWindow", "Headers"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("mainWindow", "none"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_6), _translate("mainWindow", "form-data"))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_8), _translate("mainWindow", "raw"))
         self.params_tablist.setTabText(self.params_tablist.indexOf(self.tab), _translate("mainWindow", "Body"))
         self.response_tablist.setTabText(self.response_tablist.indexOf(self.tab_4), _translate("mainWindow", "Pretty View"))
         self.response_tablist.setTabText(self.response_tablist.indexOf(self.response_raw_tab), _translate("mainWindow", "Raw Request Dump"))
@@ -436,4 +466,3 @@ if __name__ == "__main__":
     ui.setupUi(mainWindow)
     mainWindow.show()
     sys.exit(app.exec_())
-

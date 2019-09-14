@@ -165,7 +165,7 @@
                <item row="1" column="0">
                 <widget class="QTabWidget" name="params_tablist">
                  <property name="currentIndex">
-                  <number>2</number>
+                  <number>3</number>
                  </property>
                  <widget class="QWidget" name="params_tab">
                   <attribute name="title">
@@ -207,6 +207,13 @@
                        <string>Value</string>
                       </property>
                      </column>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton">
+                     <property name="text">
+                      <string>Add Parameter</string>
+                     </property>
                     </widget>
                    </item>
                   </layout>
@@ -316,6 +323,39 @@
                   <attribute name="title">
                    <string>Body</string>
                   </attribute>
+                  <layout class="QGridLayout" name="gridLayout_12">
+                   <item row="0" column="0">
+                    <widget class="QTabWidget" name="tabWidget">
+                     <property name="currentIndex">
+                      <number>2</number>
+                     </property>
+                     <widget class="QWidget" name="tab_5">
+                      <attribute name="title">
+                       <string>none</string>
+                      </attribute>
+                     </widget>
+                     <widget class="QWidget" name="tab_6">
+                      <attribute name="title">
+                       <string>form-data</string>
+                      </attribute>
+                     </widget>
+                     <widget class="QWidget" name="tab_8">
+                      <attribute name="title">
+                       <string>raw</string>
+                      </attribute>
+                      <layout class="QGridLayout" name="gridLayout_13">
+                       <item row="0" column="0">
+                        <widget class="QTextEdit" name="textEdit">
+                         <property name="frameShape">
+                          <enum>QFrame::NoFrame</enum>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </widget>
+                    </widget>
+                   </item>
+                  </layout>
                  </widget>
                 </widget>
                </item>
@@ -332,7 +372,7 @@
                <item row="3" column="0" colspan="2">
                 <widget class="QTabWidget" name="response_tablist">
                  <property name="currentIndex">
-                  <number>2</number>
+                  <number>1</number>
                  </property>
                  <widget class="QWidget" name="tab_4">
                   <attribute name="title">
@@ -564,7 +604,7 @@
      <x>0</x>
      <y>0</y>
      <width>1047</width>
-     <height>26</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
