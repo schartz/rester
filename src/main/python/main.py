@@ -24,11 +24,15 @@ class Rester(ResterUiWindow):
         self.app_state.request_attributes.request_type = text
 
     def send_request(self):
-        self.clear_ui_before_request()
         self.app_state.request_attributes.url = self.url.text()
         self.request_thread.request_completed.connect(self.handle_http_response)
         self.progress_bar.setVisible(True)
+        self.prepare_request()
         self.request_thread.start()
+
+    def prepare_request(self):
+        self.clear_ui_before_request()
+
 
     def handle_http_response(self, response_signal: dict):
         self.progress_bar.setVisible(False)

@@ -85,3 +85,4 @@ This project is licensed under the GPL License.
 * Thanks brilliant folks behind urllib3
 * Thanks a ton [Riverbank Computing Limited](https://www.riverbankcomputing.com) for providing us with PyQt
 * A big shout out to [Michael Herrmann](http://www.herrmann.io/) for awesome fman build system.
+* Thanks [Gregor](https://github.com/GrxE/PyQJsonModel) for PyQtJsonModel
