@@ -33,6 +33,19 @@ class Rester(ResterUiWindow):
     def prepare_request(self):
         self.clear_ui_before_request()
 
+        # set up headers
+        for row in range(self.request_headers_table.rowCount()):
+            key = self.request_headers_table.item(row, 1).text()
+            value = self.request_headers_table.item(row, 2).text()
+            self.app_state.request_attributes.headers[key] = value
+
+        # set up request URL Parameters
+        print()
+        for row in range(self.params_table.rowCount()):
+            key = self.params_table.item(row, 1).text()
+            value = self.params_table.item(row, 2).text()
+            self.app_state.request_attributes.parameters[key] = value
+
 
     def handle_http_response(self, response_signal: dict):
         self.progress_bar.setVisible(False)
@@ -90,17 +103,47 @@ class Rester(ResterUiWindow):
 
         delete_button = QtWidgets.QPushButton("x")
         self.request_headers_table.setCellWidget(insert_position, 0, delete_button)
-        delete_button.clicked.connect(self.delete_selected_row)
+        delete_button.clicked.connect(self.delete_selected_header)
         delete_button.setStyleSheet("color: red; font-weight: bold")
 
-        self.headers_tab_title.setText('Headers(' + str(insert_position + 1) + ')')
+        self.headers_tab_title.setText('Headers (' + str(insert_position + 1) + ')')
 
-    def delete_selected_row(self):
+    def add_new_parameter_area(self):
+        insert_position = self.params_table.rowCount()
+        self.params_table.insertRow(insert_position)
+
+        delete_button = QtWidgets.QPushButton("x")
+        self.params_table.setCellWidget(insert_position, 0, delete_button)
+        delete_button.clicked.connect(self.delete_selected_param)
+        delete_button.setStyleSheet("color: red; font-weight: bold")
+
+        self.params_tab_title.setText('URL Query Parameters (' + str(insert_position + 1) + ')')
+
+    def delete_selected_header(self):
         button = self.main_window.sender()
         if button:
             row = self.request_headers_table.indexAt(button.pos()).row()
             self.request_headers_table.removeRow(row)
-            self.headers_tab_title.setText('Headers(' + str(self.request_headers_table.rowCount()) + ')')
+            self.headers_tab_title.setText('Headers (' + str(self.request_headers_table.rowCount()) + ')')
+
+    def delete_selected_param(self):
+        button = self.main_window.sender()
+        if button:
+            row = self.params_table.indexAt(button.pos()).row()
+            self.params_table.removeRow(row)
+            self.params_tab_title.setText('URL Query Parameters (' + str(self.params_table.rowCount()) + ')')
+
+    def set_no_body_request(self):
+        self.raw_body_type.setVisible(False)
+
+    def set_form_data_request(self):
+        self.raw_body_type.setVisible(False)
+
+    def set_url_encoded_form_data_request(self):
+        self.raw_body_type.setVisible(False)
+
+    def set_raw_data_request(self):
+        self.raw_body_type.setVisible(True)
 
 
 def bind_actions(rester: Rester):
@@ -115,6 +158,13 @@ def bind_actions(rester: Rester):
     rester.request_type.activated[str].connect(rester.on_url_type_changed)
     rester.send_btn.clicked.connect(rester.send_request)
     rester.add_new_header_btn.clicked.connect(rester.add_new_header_area)
+    rester.add_new_param_btn.clicked.connect(rester.add_new_parameter_area)
+
+    rester.raw_body_type.setVisible(False)
+    rester.radio_button_nobody.clicked.connect(rester.set_no_body_request)
+    rester.radio_button_form_data.clicked.connect(rester.set_form_data_request)
+    rester.radio_button_url_form_data.clicked.connect(rester.set_url_encoded_form_data_request)
+    rester.radio_button_raw.clicked.connect(rester.set_raw_data_request)
 
 
 if __name__ == '__main__':

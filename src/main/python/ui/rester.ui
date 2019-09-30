@@ -165,7 +165,7 @@
                <item row="1" column="0">
                 <widget class="QTabWidget" name="params_tablist">
                  <property name="currentIndex">
-                  <number>3</number>
+                  <number>2</number>
                  </property>
                  <widget class="QWidget" name="params_tab">
                   <attribute name="title">
@@ -188,7 +188,7 @@
                    <item>
                     <widget class="QTableWidget" name="params_table">
                      <property name="rowCount">
-                      <number>1</number>
+                      <number>0</number>
                      </property>
                      <property name="horizontalHeader" stdset="0">
                       <string/>
@@ -196,7 +196,11 @@
                      <attribute name="horizontalHeaderStretchLastSection">
                       <bool>true</bool>
                      </attribute>
-                     <row/>
+                     <column>
+                      <property name="text">
+                       <string>Actions</string>
+                      </property>
+                     </column>
                      <column>
                       <property name="text">
                        <string>Key</string>
@@ -210,7 +214,7 @@
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="pushButton">
+                    <widget class="QPushButton" name="add_new_param_btn">
                      <property name="text">
                       <string>Add Parameter</string>
                      </property>
@@ -327,7 +331,7 @@
                    <item row="0" column="0">
                     <widget class="QFrame" name="frame">
                      <property name="styleSheet">
-                      <string notr="true"/>
+                      <string notr="true">background-color: #EFEFEF</string>
                      </property>
                      <property name="frameShape">
                       <enum>QFrame::StyledPanel</enum>
@@ -338,12 +342,6 @@
                      <layout class="QHBoxLayout" name="horizontalLayout">
                       <item>
                        <widget class="QRadioButton" name="radio_button_nobody">
-                        <property name="styleSheet">
-                         <string notr="true">QRadioButton::indicator:checked {
-    background-color:       red;
-    border:                 2px solid white;
-}</string>
-                        </property>
                         <property name="text">
                          <string>no body</string>
                         </property>
@@ -398,7 +396,11 @@
                        <number>0</number>
                       </property>
                       <item row="1" column="0">
-                       <widget class="QTextEdit" name="textEdit"/>
+                       <widget class="QTextEdit" name="textEdit">
+                        <property name="styleSheet">
+                         <string notr="true">margin-top: 5px</string>
+                        </property>
+                       </widget>
                       </item>
                       <item row="0" column="0">
                        <widget class="QComboBox" name="raw_body_type">
@@ -574,9 +576,6 @@
          <widget class="QPushButton" name="save_btn">
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
           </property>
           <property name="text">
            <string>Save</string>
