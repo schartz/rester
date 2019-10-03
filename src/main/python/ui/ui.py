@@ -53,8 +53,6 @@ class Ui_mainWindow(object):
         sizePolicy.setHeightForWidth(self.request_type.sizePolicy().hasHeightForWidth())
         self.request_type.setSizePolicy(sizePolicy)
         self.request_type.setObjectName("request_type")
-        self.request_type.addItem("")
-        self.request_type.addItem("")
         self.gridLayout_10.addWidget(self.request_type, 0, 0, 1, 1)
         self.req_res_container_frame = QtWidgets.QFrame(self.action_frame)
         self.req_res_container_frame.setFrameShape(QtWidgets.QFrame.NoFrame)
@@ -288,7 +286,6 @@ class Ui_mainWindow(object):
         self.gridLayout_10.addWidget(self.send_btn, 0, 2, 1, 1)
         self.save_btn = QtWidgets.QPushButton(self.action_frame)
         self.save_btn.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
-        self.save_btn.setStyleSheet("")
         self.save_btn.setObjectName("save_btn")
         self.gridLayout_10.addWidget(self.save_btn, 0, 3, 1, 1)
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
@@ -409,16 +406,14 @@ class Ui_mainWindow(object):
         self.menubar.addAction(self.menuHelp.menuAction())
 
         self.retranslateUi(mainWindow)
-        self.params_tablist.setCurrentIndex(3)
+        self.params_tablist.setCurrentIndex(2)
         self.response_tablist.setCurrentIndex(1)
-        self.history_and_collection_tabs.setCurrentIndex(1)
+        self.history_and_collection_tabs.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(mainWindow)
 
     def retranslateUi(self, mainWindow):
         _translate = QtCore.QCoreApplication.translate
         mainWindow.setWindowTitle(_translate("mainWindow", "Rester | A Slick REST Client"))
-        self.request_type.setItemText(0, _translate("mainWindow", "GET"))
-        self.request_type.setItemText(1, _translate("mainWindow", "POST"))
         self.label_2.setText(_translate("mainWindow", "Request"))
         self.params_tab_title.setText(_translate("mainWindow", "URL Query Parameters"))
         item = self.params_table.horizontalHeaderItem(0)
